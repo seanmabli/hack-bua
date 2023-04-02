@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@atomap/use-places-autocomplete": "^1.0.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
@@ -17,9 +16,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-webcam": "^7.0.1",
-    "stylis": "^4.1.1",
-    "stylis-plugin-rtl": "^2.1.1"
+    "react-webcam": "^7.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
