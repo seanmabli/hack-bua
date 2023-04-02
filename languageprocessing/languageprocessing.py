@@ -4,38 +4,7 @@ import speech_recognition as sr
 import pyttsx3
 import time
 
-'''fs = 44100  # Sample rate
-seconds = 3  # Duration of recording
-
-myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
-sd.wait()  # Wait until recording is finished
-write('output1.wav', fs, myrecording)  # Save as WAV file
-
-filename = "output1.wav"
 r = sr.Recognizer()
-
-with sr.AudioFile(filename) as source:
-    # listen for the data (load audio to memory)
-    audio_data = r.record(source)
-    # recognize (convert from speech to text)
-    text = r.recognize_google(audio_data)
-    print(text)'''
-
-# Python program to translate
-# speech to text and text to speech
-
-
-import speech_recognition as sr
-import pyttsx3
-
-# Initialize the recognizer
-r = sr.Recognizer()
-
-# Function to convert text to
-# speech
-
-# Loop infinitely for user to
-# speak
 
 def checkInput(keywords, text):
 	for word in keywords:
@@ -80,38 +49,3 @@ def checkpatient():
 		
 	except sr.UnknownValueError:
 		print("unknown error occurred")
-
-
-'''
-# Import the Speech-to-Text client library
-from google.clou# d import speech
-
-# Instantiates a#  client
-client = speech.# SpeechClient()
-
-# The name of th# e audio file to transcribe
-gcs_uri = "gs://# auto-to-text-hackathon/audio-files/Untitled video - Made with Clipchamp.mp4"
-
-def transcribe_s# peech():
-  audio = speech# .RecognitionAudio(uri=gcs_uri)
-
-  config = speec# h.RecognitionConfig(
-    encoding=spe# ech.RecognitionConfig.AudioEncoding.LINEAR16,
-    sample_rate_# hertz=44100,
-    language_cod# e="en-US",
-    model="phone# _call",
-    enable_word_# confidence=True,
-    use_enhanced# =True,
-    enable_word_# time_offsets=True,
-  )
-
-  # Detec# ts spee# ch in the audio file
-  operation = cl# ient.long_running_recognize(config=config, audio=audio)
-
-  print("Waiting#  for operation to complete...")
-  response = ope# ration.result(timeout=90)
-
-  for result in # response.results:
-    print("Trans# cript: {}".format(result.alternatives[0].transcript))
-
-transcribe_speec# h()'''

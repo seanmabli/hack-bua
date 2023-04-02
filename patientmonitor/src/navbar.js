@@ -8,8 +8,7 @@ export function Navbar() {
   const navigate = useNavigate();
   return (
     <Toolbar>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}
-          onClick={() => navigate("/")}>
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         Patient Monitor
       </Typography>
       <Button color="inherit" 
