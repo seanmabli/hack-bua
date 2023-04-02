@@ -1,21 +1,6 @@
 import speech_recognition as sr
 import time
 
-from firebase_admin import credentials, initialize_app, storage
-
-cred = credentials.Certificate('patientmonitorinterface-firebase-adminsdk-fami0-0b9c06eb16.json')
-initialize_app(cred, {'storageBucket': 'patientmonitorinterface.appspot.com'})
-
-'''
-source_blob_name = "audio"
-destination_file_name = r"audio.wav"
-bucket_name = "patientmonitorinterface.appspot.com"
-
-bucket = storage.bucket()
-blob = bucket.blob(source_blob_name)
-blob.download_to_filename(destination_file_name)
-'''
-
 r = sr.Recognizer()
 
 def checkInput(keywords, text):
