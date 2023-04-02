@@ -1,6 +1,6 @@
 import { Navbar } from "./navbar";
 import { database } from "./firebase";
-import { ref, onValue, child, get } from "firebase/database";
+import { ref, child, get } from "firebase/database";
 import React from "react";
 
 export function Doctor() {
@@ -8,9 +8,6 @@ export function Doctor() {
 
   const d = new Date();
   let time = d.getTime();
-  
-  
-
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -27,7 +24,6 @@ export function Doctor() {
     }, 200);
     return () => clearInterval(interval);
   }, []);
-
 
   return (
     <div>
