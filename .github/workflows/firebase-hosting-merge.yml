@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: create build
-        working-directory: ./docs
+        working-directory: ./patientmonitor
         run: npm --force ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
