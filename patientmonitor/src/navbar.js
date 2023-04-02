@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 export function Navbar() {
   const navigate = useNavigate();
   return (
-    <Toolbar>
+    <Toolbar class="nav">
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         Patient Monitor
       </Typography>
