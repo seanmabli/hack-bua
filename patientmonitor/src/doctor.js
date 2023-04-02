@@ -5,7 +5,7 @@ import React from "react";
 
 export function Doctor() {
   const [imgSrc, setImgSrc] = React.useState(null);
-
+  let patientHelp = false;
   const d = new Date();
   let time = d.getTime();
 
@@ -28,12 +28,24 @@ export function Doctor() {
   return (
     <div>
       <Navbar />
-      <p>Doctor</p>
-      {imgSrc && (
-        <img
-          src={imgSrc}
-        />
-      )}
+      <div class="videoContainerDoctor">
+        <div>
+        <p class='cam-txt-doctor'>Patient's Video Stream</p>
+          {imgSrc && (
+            <img class="cam-feed"
+              src={imgSrc}
+            />
+          )}
+        </div>
+        <div>
+          <div>
+            <p class="patient">Patient data</p>
+            <ul>
+              <li class="patientInfo" >Patient is Fine</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

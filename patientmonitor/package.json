@@ -11,6 +11,7 @@
     "date-fns": "^2.29.1",
     "firebase": "^9.8.3",
     "react": "^18.2.0",
+    "react-audio-voice-recorder": "^1.0.5",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-router": "^6.3.0",
