@@ -1,11 +1,11 @@
 
 * {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;  
 }
 body {
-  background-color: #495057;
+  background-color: #fff;
 }
 /* format tipography to change cursor */
 
@@ -17,17 +17,21 @@ body {
 }
 
 .cam-feed {
-  border: 1px solid ##ffe3e3;
+  border: 3px solid #0b7285;
   border-radius: 1%;
   position: block;
+  width: 640px;
+  height: 480px;
 }
+
+.material-icons.md-24 { font-size: 40px; }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #212529;
+  background-color: #0b7285;
   color: #fff;
   height: 60px;
 }
@@ -37,7 +41,23 @@ body {
   text-align: center;
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
+  color: #000;
+}
+
+.cam-txt-doctor {
+  margin-top: 16px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+}
+
+.patient {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 16px;
 }
 
 button {
@@ -49,10 +69,31 @@ button {
 	cursor: pointer;
 	outline: inherit;
   display: block;
+  border: #0b7285 3px solid;
+  border-radius: 25%;
+  display: flex;
+  align-items: center;  
+  justify-content: center;
 }
 
 .btn-container {
   display: flex;
   align-items: center;  
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
+  gap:10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.videoContainerDoctor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  gap: 10%;
+}
+
+.patientInfo {
+  font-size: 24px;
 }

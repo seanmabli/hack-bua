@@ -8,6 +8,7 @@ import { useAudioRecorder } from "react-audio-voice-recorder";
 
 export function Patient() {
   const webcamRef = React.useRef(null);
+  const [audioEnabled, setAudioEnabled] = React.useState(true);
 
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot({
@@ -24,7 +25,6 @@ export function Patient() {
       image: image,
     });
   }
-
   React.useEffect(() => {
     const interval = setInterval(() => {
       capture();
@@ -62,6 +62,23 @@ export function Patient() {
             screenshotFormat="image/webp"
           />
         </div>
+      </div>
+      <div class="btn-container">
+        <div><button><i class="material-icons md-24" id="vid" onClick={
+          () => {
+            let vid = document.querySelector("#vid");
+            vid.innerHTML = vid.innerHTML === "videocam" ? "videocam_off" : "videocam";
+            let cam = document.querySelector(".cam-feed");
+            cam.style.display = cam.style.display === "none" ? "block" : "none";
+           }  
+        } >videocam</i></button></div>
+        <div><button><i class="material-icons md-24" id="mic" onClick={
+          () => {
+            let mic = document.querySelector("#mic");
+            mic.innerHTML = mic.innerHTML === "mic" ? "mic_off" : "mic";
+            audioEnabled = !audioEnabled;
+           }
+        } >mic</i></button></div>
       </div>
     </>
   );
