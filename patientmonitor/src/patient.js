@@ -38,7 +38,7 @@ export function Patient() {
   return (
     <>
       <Navbar />
-      <p class='cam-txt'>Video feed</p>
+      <p class='cam-txt'>Patient's Video Stream</p>
       <div class="videoContainer">
         <div>
           <Webcam class="cam-feed" audio={true} ref={webcamRef} screenshotFormat="image/webp" /> 
