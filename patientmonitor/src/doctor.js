@@ -5,6 +5,7 @@ import React from "react";
 
 export function Doctor() {
   const [imgSrc, setImgSrc] = React.useState(null);
+  const [outText, setOutText] = React.useState("");
   let patientHelp = false;
   const d = new Date();
   let time = d.getTime();
@@ -28,10 +29,10 @@ export function Doctor() {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      get(child(ref(database), "outaudio/new")).then((snapshot) => {
+      get(child(ref(database), "audioOutput/new")).then((snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
-          setImgSrc(data.image);
+          setOutText(data);
         } else {
           console.log("No data available");
         }
@@ -57,10 +58,8 @@ export function Doctor() {
         </div>
         <div>
           <div>
-            <p class="patient">Patient data</p>
-            <ul>
-              <li class="patientInfo" >Patient is Fine</li>
-            </ul>
+            <p class="patient">Patient Speech</p>
+            <p>{outText}</p>
           </div>
         </div>
       </div>
