@@ -24,7 +24,7 @@ export function Doctor() {
       }).catch((error) => {
         console.error(error);
       });
-    }, 1000);
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 

@@ -9,7 +9,7 @@ export function Patient() {
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot({width: 600, height: 400});
+    const imageSrc = webcamRef.current.getScreenshot({width: 100, height: 40});
     setImgSrc(imageSrc);
     writeUserData(imageSrc);
   }, [webcamRef, setImgSrc]);
@@ -26,14 +26,14 @@ export function Patient() {
     const interval = setInterval(() => {
       capture();
       console.log("captured");
-    }, 1000);
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 
   return (  
     <>
       <Navbar />
-      <Webcam audio={true} ref={webcamRef} screenshotFormat="image/jpeg" />
+      <Webcam audio={false} ref={webcamRef} screenshotFormat="image/webp" />
     </>
   );
 }
