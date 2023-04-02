@@ -15,29 +15,26 @@ export function Patient() {
   }, [webcamRef, setImgSrc]);
 
   function writeUserData(time, image) {
-    set(ref(database, 'images/' + time), {
+    set(ref(database, "images/" + time), {
       image: image,
     });
   }
 
   const d = new Date();
   let time = d.getTime();
-  let lastTime = 0;
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      capture();
+      console.log("captured");
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       <Navbar />
-      <Webcam
-        audio={true}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-      />
-      <button onClick={capture}>Capture photo</button>
-      {imgSrc && (
-        <img
-          src={imgSrc}
-        />
-      )}
+      <Webcam audio={true} ref={webcamRef} screenshotFormat="image/jpeg" />
     </>
   );
 }
