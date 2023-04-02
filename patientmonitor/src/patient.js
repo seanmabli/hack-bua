@@ -12,7 +12,7 @@ export function Patient() {
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot({width: 384, height: 216});
+    const imageSrc = webcamRef.current.getScreenshot({width: 320, height: 240});
     setImgSrc(imageSrc);
     writeUserData(imageSrc);
   }, [webcamRef, setImgSrc]);
