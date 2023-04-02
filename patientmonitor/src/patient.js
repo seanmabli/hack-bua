@@ -3,13 +3,11 @@ import React from "react";
 import Webcam from "react-webcam";
 import { ref, set } from "firebase/database";
 import { database } from "./firebase";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export function Patient() {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
-
+  let audioEnabled = true
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot({
       width: 320,
@@ -26,7 +24,6 @@ export function Patient() {
       image: image,
     });
   }
-
   React.useEffect(() => {
     const interval = setInterval(() => {
       capture();
@@ -41,12 +38,25 @@ export function Patient() {
       <p class='cam-txt'>Patient's Video Stream</p>
       <div class="videoContainer">
         <div>
-          <Webcam class="cam-feed" audio={true} ref={webcamRef} screenshotFormat="image/webp" /> 
+          <Webcam class="cam-feed" audio={audioEnabled} ref={webcamRef} screenshotFormat="image/webp" /> 
         </div>
       </div>
       <div class="btn-container">
-        <div><button><i class="material-icons">camera</i></button></div>
-        <div><button><i class="material-icons">mic</i></button></div>
+        <div><button><i class="material-icons md-24" id="vid" onClick={
+          () => {
+            let vid = document.querySelector("#vid");
+            vid.innerHTML = vid.innerHTML === "videocam" ? "videocam_off" : "videocam";
+            let cam = document.querySelector(".cam-feed");
+            cam.style.display = cam.style.display === "none" ? "block" : "none";
+           }  
+        } >videocam</i></button></div>
+        <div><button><i class="material-icons md-24" id="mic" onClick={
+          () => {
+            let mic = document.querySelector("#mic");
+            mic.innerHTML = mic.innerHTML === "mic" ? "mic_off" : "mic";
+            audioEnabled = !audioEnabled;
+           }
+        } >mic</i></button></div>
       </div>
     </>
   );
