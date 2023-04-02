@@ -25,6 +25,7 @@ export function Patient() {
       image: image,
     });
   }
+  
   React.useEffect(() => {
     const interval = setInterval(() => {
       capture();
@@ -34,16 +35,7 @@ export function Patient() {
 
   const recorderControls = useAudioRecorder();
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      recorderControls.stopRecording();
-      recorderControls.startRecording();
-      sendAudio();
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  function sendAudio() {
+  function updateSruff() {
     uploadBytes(storageRef(storage, "audio"), recorderControls.recordingBlob).then((snapshot) => {
       console.log("Uploaded a blob or file!");
     });
@@ -80,6 +72,10 @@ export function Patient() {
            }
         } >mic</i></button></div>
       </div>
+      <button onClick={recorderControls.startRecording}>Start Recording</button>
+      <button onClick={updateSruff}> upload</button>
+      <button onClick={recorderControls.stopRecording}>Start Recording</button>
+
     </>
   );
 }

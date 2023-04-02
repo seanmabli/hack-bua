@@ -1,36 +1,20 @@
-from scipy.io.wavfile import write
-import sounddevice as sd
 import speech_recognition as sr
-import pyttsx3
 import time
 
 from firebase_admin import credentials, initialize_app, storage
 
-
-cred = credentials.Certificate('patientmonitorinterface-firebase-adminsdk-fami0-7bbad24660.json')
+cred = credentials.Certificate('patientmonitorinterface-firebase-adminsdk-fami0-0b9c06eb16.json')
 initialize_app(cred, {'storageBucket': 'patientmonitorinterface.appspot.com'})
 
-
-source_blob_name = "audio.webm"
-destination_file_name = r"C:\Users\laptop\hack-bua\languageprocessing\test.webm"
+source_blob_name = "audio"
+destination_file_name = r"audio.wav"
 bucket_name = "patientmonitorinterface.appspot.com"
 
 bucket = storage.bucket()
 blob = bucket.blob(source_blob_name)
 blob.download_to_filename(destination_file_name)
 
-
-# Python program to translate
-# speech to text and text to speech
-
-# Initialize the recognizer
 r = sr.Recognizer()
-
-# Function to convert text to
-# speech
-
-# Loop infinitely for user to
-# speak
 
 def checkInput(keywords, text):
 	for word in keywords:
@@ -75,3 +59,5 @@ def checkpatient(file):
 		
 	except sr.UnknownValueError:
 		return False, ''
+
+checkpatient("audio.wav")
