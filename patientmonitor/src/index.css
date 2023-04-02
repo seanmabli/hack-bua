@@ -49,7 +49,6 @@ button {
 	cursor: pointer;
 	outline: inherit;
   display: block;
-  margin-right: 20px;
 }
 
 .btn-container {

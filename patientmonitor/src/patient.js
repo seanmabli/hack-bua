@@ -12,42 +12,31 @@ export function Patient() {
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot({width: 100, height: 40});
     setImgSrc(imageSrc);
-    writeUserData(time, imageSrc);
+    writeUserData(imageSrc);
   }, [webcamRef, setImgSrc]);
 
-  function writeUserData(time, image) {
-    set(ref(database, "images/" + time), {
+  function writeUserData(image) {
+    const d = new Date();
+    let time = d.getTime();
+    set(ref(database, "images/new"), {
       image: image,
     });
   }
-
-  const d = new Date();
-  let time = d.getTime();
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       capture();
       console.log("captured");
-    }, 1000);
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 
-  return (
+  return (  
     <>
       <Navbar />
-      <p class='cam-txt'>Video feed</p>
-      <div class="videoContainer">
-        <div>
-          <Webcam class="cam-feed"audio={true} ref={webcamRef} screenshotFormat="image/jpeg" /> 
-        </div>
-      </div>
-      <div class="btn-container">
-        <div><button><i class="material-icons">camera</i></button></div>
-        <div><button><i class="material-icons">mic</i></button></div>
-      </div>
-      
+      <Webcam audio={true} ref={webcamRef} screenshotFormat="image/jpeg" />
     </>
   );
 }
