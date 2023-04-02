@@ -9,19 +9,18 @@ export function Patient() {
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot({width: 600, height: 400});
     setImgSrc(imageSrc);
-    writeUserData(time, imageSrc);
+    writeUserData(imageSrc);
   }, [webcamRef, setImgSrc]);
 
-  function writeUserData(time, image) {
-    set(ref(database, "images/" + time), {
+  function writeUserData(image) {
+    const d = new Date();
+    let time = d.getTime();
+    set(ref(database, "images/new"), {
       image: image,
     });
   }
-
-  const d = new Date();
-  let time = d.getTime();
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -31,7 +30,7 @@ export function Patient() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
+  return (  
     <>
       <Navbar />
       <Webcam audio={true} ref={webcamRef} screenshotFormat="image/jpeg" />
