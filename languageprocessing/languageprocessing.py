@@ -37,16 +37,14 @@ r = sr.Recognizer()
 # Loop infinitely for user to
 # speak
 
-keywords = ('help').split()
-
 def checkInput(keywords, text):
 	for word in keywords:
 		if word in text.split():
 			return True
 	return False
 
-
-while True:
+def checkpatient():
+	keywords = ('help').split()
 	t = time.time()
 	# Exception handling to handle
 	# exceptions at the runtime
@@ -72,8 +70,9 @@ while True:
 			t = time.time()
 			MyText = MyText.lower()
 			if checkInput(keywords, MyText):
-				print("Patient Needs Help," + str(MyText))
-			
+				return True, MyText
+			else:
+				return False, MyText
 			time.sleep(.5)
 			# x = input('wass up')
 	except sr.RequestError as e:
