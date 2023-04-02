@@ -115,5 +115,3 @@ def transcribe_s# peech():
     print("Trans# cript: {}".format(result.alternatives[0].transcript))
 
 transcribe_speec# h()'''
-
-print(checkpatient())
