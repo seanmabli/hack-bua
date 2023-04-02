@@ -3,16 +3,18 @@ import React from "react";
 import Webcam from "react-webcam";
 import { ref, set } from "firebase/database";
 import { database } from "./firebase";
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export function Patient() {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot({width: 320, height: 240});
+    const imageSrc = webcamRef.current.getScreenshot({
+      width: 320,
+      height: 240,
+    });
     setImgSrc(imageSrc);
     writeUserData(imageSrc);
   }, [webcamRef, setImgSrc]);
@@ -33,10 +35,19 @@ export function Patient() {
     return () => clearInterval(interval);
   }, []);
 
-  return (  
+  return (
     <>
       <Navbar />
-      <Webcam audio={true} ref={webcamRef} screenshotFormat="image/jpeg" />
+      <p class='cam-txt'>Video feed</p>
+      <div class="videoContainer">
+        <div>
+          <Webcam class="cam-feed" audio={true} ref={webcamRef} screenshotFormat="image/webp" /> 
+        </div>
+      </div>
+      <div class="btn-container">
+        <div><button><i class="material-icons">camera</i></button></div>
+        <div><button><i class="material-icons">mic</i></button></div>
+      </div>
     </>
   );
 }
